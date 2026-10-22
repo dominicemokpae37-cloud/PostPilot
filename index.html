@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f7e7d7"><title>PostPilot — Content Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loginScreen" class="login-screen">
+  <div class="login-card">
+    <div class="brand-mark">✦</div><p class="eyebrow">YOUR SOCIAL MEDIA HQ</p>
+    <h1>PostPilot</h1><p class="muted">Plan your posts. Keep your ideas moving.</p>
+    <button id="googleLogin" class="google-btn"><span class="google-g">G</span> Continue with Google</button>
+    <p class="tiny">Google sign-in needs Firebase configuration. See README.</p>
+    <button id="demoLogin" class="text-btn">Preview app without Google</button>
+  </div>
+</div>
+<div id="app" class="app hidden">
+<aside class="sidebar">
+  <div class="brand"><span class="brand-mark small">✦</span><b>PostPilot</b></div>
+  <div class="eyebrow">WORKSPACE</div>
+  <button class="nav active" data-view="planner">▦ &nbsp; Content planner</button>
+  <button class="nav" data-view="ideas">✧ &nbsp; Idea bank</button>
+  <button class="nav" data-view="overview">⌁ &nbsp; Overview</button>
+  <div class="side-bottom"><div class="user-chip"><span class="avatar">PP</span><span><b id="userName">Preview account</b><small>Creator workspace</small></span></div><button id="logout" class="text-btn">Sign out</button></div>
+</aside>
+<main>
+<header class="topbar"><div><p class="eyebrow">YOUR SOCIAL MEDIA HQ</p><h1 id="pageTitle">Content planner</h1></div><div class="top-actions"><button id="themeToggle" class="soft-btn">☾ Dark mode</button><button id="newPost" class="primary">＋ New post</button></div></header>
+<section class="intro"><h2>Make your next post a little easier.</h2><p>Organize ideas, plan your calendar, and keep your content moving.</p></section>
+<section class="stats">
+<div class="stat"><span>Planned posts</span><strong id="plannedCount">0</strong><small>Ready to work on</small></div>
+<div class="stat"><span>Published</span><strong id="doneCount">0</strong><small>Marked as published</small></div>
+<div class="stat"><span>Ideas saved</span><strong id="ideaCount">0</strong><small>For your next post</small></div>
+<div class="stat featured"><span>Momentum</span><strong>One post at a time</strong><small>Small steps add up.</small></div>
+</section>
+<section class="calendar-card">
+<div class="calendar-head"><div><h2>Publishing calendar</h2><p class="muted">See what's coming up and stay organized.</p></div><div class="month-controls"><button id="prevMonth" aria-label="Previous month">‹</button><b id="monthLabel"></b><button id="nextMonth" aria-label="Next month">›</button><button id="todayBtn" class="soft-btn">Today</button></div></div>
+<div class="weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+<div id="calendar" class="calendar"></div>
+<div class="legend"><span>● Instagram</span><span>● TikTok</span><span>● YouTube</span><span>● LinkedIn</span></div>
+</section>
+<section class="lower"><div class="panel"><h2>Upcoming posts</h2><div id="upcoming"></div></div><div class="panel"><h2>Idea bank</h2><form id="ideaForm"><input id="ideaInput" placeholder="Save a post idea…" maxlength="180"><button class="primary">Save idea</button></form><div id="ideas"></div></div></section>
+<footer>Made with care by <b>Dominic Emokpae</b> · <a href="mailto:dominemokpae6@gmail.com">Contact me</a></footer>
+</main>
+</div>
+<dialog id="postDialog"><form id="postForm" class="dialog-form">
+<div class="dialog-head"><h2 id="dialogTitle">Plan a post</h2><button type="button" id="closeDialog" class="x">×</button></div>
+<input type="hidden" id="postId"><label>Post title<input id="postTitle" required maxlength="120" placeholder="e.g. A quick editing tip"></label>
+<label>Platform<select id="platform"><option>Instagram</option><option>TikTok</option><option>YouTube</option><option>LinkedIn</option><option>Other</option></select></label>
+<label>Planned date<input id="postDate" type="date" required></label>
+<label>Reminder time (optional)<input id="postTime" type="time"></label>
+<label>Caption / notes<textarea id="postNotes" rows="3" placeholder="Add your caption or notes…"></textarea></label>
+<div class="dialog-actions"><button type="button" id="deletePost" class="danger hidden">Clear plan</button><span class="grow"></span><button type="button" id="cancelPost" class="soft-btn">Cancel</button><button class="primary">Save post</button></div>
+</form></dialog>
+<script src="app.js"></script>
+</body></html>
